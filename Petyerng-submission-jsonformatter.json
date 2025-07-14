@@ -1,0 +1,385 @@
+{
+  "visits":[{
+
+  "health_facility_code": "110101",
+  "patient_code": "PTN00063705",
+  "code": "VIS00167960",
+
+  "admitted_at": "07/07/2025 15:01",
+  "discharged_at": "07/07/2025 15:20",
+  "visit_outcome": null,
+  "visit_type": "OPD",
+  "created_at": "2025-07-07T15:01:00+07:00",
+  "updated_at": "2025-07-07T15:20:00+07:00",
+
+
+  "patient": {
+    "birthdate": "1998-10-09",
+    "sex": "F",
+    "name": null,
+    "occupation": "កម្មកររោងចក្រ",
+    "created_at": "2025-07-03T15:33:00+07:00",
+    "updated_at": "2025-07-03T15:33:00+07:00",
+    "spid": "1285974921",
+    "address": {
+      "province": {
+        "code": 4,
+        "name": "កំពង់ឆ្នាំង"
+      },
+      "district": {
+        "code": 407,
+        "name": "សាមគ្គីមានជ័យ"
+      },
+      "commune": {
+        "code": null,
+        "name": null
+      },
+      "village": {
+        "code": null,
+        "name": null
+      },
+      "house_number": null,
+      "street_number": null,
+      "location": null
+    },
+    "identifications": null
+  },
+  "triages": [
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "code": "MED00141515",
+      "chief_complaint": "Headache",
+      "height": "167",
+      "weight": "56",
+      "recorded_at": "07/07/2025 15:02:17",
+      "recorded_by": "Sophea Seng",
+      "title": "មន្ត្រីរដ្ឋបាល​"
+    }
+  ],
+  "vital_signs": [
+    {
+      "encounter_code": "MED00141515",
+      "recorded_at": "07/07/2025 15:02:17",
+      "recorded_by": "Sophea Seng",
+      "title": "មន្ត្រីរដ្ឋបាល​",
+      "observations": [
+        {
+          "name": "Systolic",
+          "value": 0
+        },
+        {
+          "name": "Diastolic",
+          "value": 0
+        },
+        {
+          "name": "Pulse",
+          "value": 0
+        },
+        {
+          "name": "Respiratory",
+          "value": 0
+        },
+        {
+          "name": "O2sat",
+          "value": 0
+        },
+        {
+          "name": "Temperature",
+          "value": 0
+        },
+        {
+          "name": "Glucose",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "medical_histories": [
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "History of Present Illness",
+      "value": [
+        "History of present illness\t"
+      ]
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Past Medical History",
+      "value": [
+        "Sdfasdf dsf df"
+      ]
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Past Surgical History",
+      "value": []
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Current Medication",
+      "value": []
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Allergies",
+      "value": [
+        "Seafood"
+      ]
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Family History",
+      "value": [
+        "Fever asdf "
+      ]
+    }
+  ],
+  "physical_examinations": [
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "General Appearance",
+      "value": "General Appearance\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "ENT(ORL)",
+      "value": "Other:ENT(ORL)\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Cardiovascular System",
+      "value": "Other:Cardiovascular System\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Respiratory System",
+      "value": "Other:Respiratory System\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Gastro-Intestinal System",
+      "value": "Other:Gastro-Intestinal System\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Urogenital System",
+      "value": "Other:Urogenital System\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Skin & Extremities",
+      "value": "Other:Skin & Extremities\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Central Nervouse System",
+      "value": "Other:Central Nervouse System\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Mental Status",
+      "value": "Insight:Mental Status\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Glasgow Coma Scale",
+      "value": "Other:Glasgow coma scale\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Abdomen",
+      "value": "Other:Abdomen",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Other body parts",
+      "value": "Other:Other body parts\t",
+      "value_type": "text",
+      "value_unit": null
+    },
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "name": "Other",
+      "value": "Other",
+      "value_type": "text",
+      "value_unit": null
+    }
+  ],
+  "inpatients": null,
+  "outpatients": [
+    {
+      "visit_code": "VIS00167960",
+      "code": "MED00141515",
+      "service_type": "Cardiologist",
+      "started_at": "2025-07-07T15:01:00+07:00",
+      "ended_at": "2025-07-07T15:20:00+07:00",
+      "created_at": null,
+      "updated_at": "2025-07-07T15:20:00+07:00"
+    }
+  ],
+  "surgeries": [],
+  "laboratories": [],
+  "soaps": [
+    {
+      "encounter_code": "MED00141515",
+      "subjective": null,
+      "objective": null,
+      "assessment": null,
+      "plan": null,
+      "evaluation": "A06-Amoebiasis\r\nA01-Typhoid Fever\r\n- Sfandf dsf"
+    }
+  ],
+  "progress_notes": [],
+  "imageries": [],
+  "diagnosis": [
+    {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "diagnosis_type_name": null,
+      "diagnosis_code": null,
+      "diagnosis_name": "A06-Amoebiasis\r\nA01-Typhoid Fever\r\n- Sfandf dsf",
+      "diagnosis_description": null,
+      "diagnosed_at": null,
+      "diagnosed_by": "Sophea Seng",
+      "title": "មន្ត្រីរដ្ឋបាល​"
+    }
+  ],
+  "prescriptions": {
+    "PRE00108694": {
+      "patient_code": "PTN00063705",
+      "visit_code": "VIS00167960",
+      "encounter_code": "MED00141515",
+      "code": "PRE00108694",
+      "prescribed_at": "2025-07-07T15:20:00+07:00",
+      "prescribed_by": "Sophea Seng",
+      "title": "Administration Officer ",
+      "medications": [
+        {
+          "code": null,
+          "medicine_name": "Amoxicilline 500Mg(Tablet)",
+          "method": "ពិសា",
+          "morning": 1,
+          "afternoon": 0,
+          "evening": 1,
+          "night": 0
+        },
+        {
+          "code": null,
+          "medicine_name": "Cimetidine 200mg/2ml (injection)(A)ស្តុកតិច",
+          "method": "ចាក់",
+          "morning": 1,
+          "afternoon": 0,
+          "evening": 1,
+          "night": 0
+        }
+      ]
+    }
+  },
+  "invoices": {
+    "patient_code": "PTN00063705",
+    "visit_code": "VIS00167960",
+    "encounter_code": "MED00141515",
+    "code": "INV00115492",
+    "payment_type": "បសស",
+    "invoice_date": "2025-07-07T15:01:00+07:00",
+    "total": 82500,
+    "created_at": "2025-07-07T15:01:00+07:00",
+    "updated_at": "2025-07-07T14:04:18+07:00",
+    "cashier": null,
+    "services": [
+      {
+        "invoice_code": "INV00115492",
+        "service_code": null,
+        "service_name": "Consultation Spécialisée avec SC01",
+        "service_category": "Consulting fee",
+        "price": "60000",
+        "paid": false
+      },
+      {
+        "invoice_code": "INV00115492",
+        "service_code": null,
+        "service_name": "MP039 Non Sterile Glow",
+        "service_category": "Service",
+        "price": "20500",
+        "paid": false
+      }
+    ],
+    "medications": [
+      {
+        "invoice_code": "INV00115492",
+        "medicine_code": "Cimetidine 200mg/2ml (injection)(A)ស្តុកតិច",
+        "price": "1000",
+        "paid": false
+      },
+      {
+        "invoice_code": "INV00115492",
+        "medicine_code": "Amoxicilline 500Mg(Tablet)",
+        "price": "0",
+        "paid": false
+      }
+    ]
+  }
+  }]
+}
