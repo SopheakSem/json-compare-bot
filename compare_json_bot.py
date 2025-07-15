@@ -3,21 +3,21 @@ import re
 import logging
 from telegram import Update, Document
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.constants import ChatType
 
 # --- JSON comparison logic (same as before, but as functions) ---
 
 def is_date_string(s):
-    if not isinstance(s, str):
-        return False
+    # if not isinstance(s, str):
+    #     return False
     date_patterns = [
-        r"^\d{4}-\d{2}-\d{2}$",
+        r"^\d{4}-\d{2}-\d{2}$",  # YYYY-MM-DD
         r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$",
-        r"^\d{2}/\d{2}/\d{4}(?: \d{2}:\d{2})?$",
     ]
     return any(re.match(p, s) for p in date_patterns)
 
 def get_type(val):
-    if is_date_string(val):
+    if isinstance(val, str) and is_date_string(val):
         return "date"
     elif isinstance(val, bool):
         return "bool"
@@ -57,49 +57,49 @@ class JSONDiff:
         })
 
     def report(self):
-    if not self.differences:
-        return "✅ No format differences found. Second JSON fully complies with base JSON."
-    lines = ["=== 1-by-1 JSON Format Compliance Report (Base vs Second JSON) ==="]
+        if not self.differences:
+            return "✅ No format differences found. Second JSON fully complies with base JSON."
+        lines = ["=== 1-by-1 JSON Format Compliance Report (Base vs Second JSON) ==="]
 
-    # Group differences by kind
-    grouped = {"missing_in_target": [], "extra_in_target": [], "type_mismatch": [], "list_length": []}
-    for diff in self.differences:
-        grouped.get(diff["kind"], []).append(diff)
+        # Group differences by kind
+        grouped = {"missing_in_target": [], "extra_in_target": [], "type_mismatch": [], "list_length": []}
+        for diff in self.differences:
+            grouped.get(diff["kind"], []).append(diff)
 
-    # Missing keys
-    if grouped["missing_in_target"]:
-        lines.append(f"\n❌ Missing in second JSON ({len(grouped['missing_in_target'])}):")
-        for diff in grouped["missing_in_target"]:
-            lines.append(
-                f"  - {diff['path']} (level {diff['level']}): expected '{diff['base_type']}' (example: {repr(diff['base_val'])})"
-            )
+        # Missing keys
+        if grouped["missing_in_target"]:
+            lines.append(f"\n❌ Missing in second JSON ({len(grouped['missing_in_target'])}):")
+            for diff in grouped["missing_in_target"]:
+                lines.append(
+                    f"  - {diff['path']} : expected '{diff['base_type']}' (example: {repr(diff['base_val'])})"
+                )
 
-    # Extra keys
-    if grouped["extra_in_target"]:
-        lines.append(f"\n⚠️ Extra in second JSON ({len(grouped['extra_in_target'])}):")
-        for diff in grouped["extra_in_target"]:
-            lines.append(
-                f"  - {diff['path']} (level {diff['level']}): found '{diff['target_type']}' (example: {repr(diff['target_val'])}) (not in base)"
-            )
+        # Extra keys
+        if grouped["extra_in_target"]:
+            lines.append(f"\n⚠️ Extra in second JSON ({len(grouped['extra_in_target'])}):")
+            for diff in grouped["extra_in_target"]:
+                lines.append(
+                    f"  - {diff['path']} : found '{diff['target_type']}' (example: {repr(diff['target_val'])}) (not in base)"
+                )
 
-    # Type mismatches
-    if grouped["type_mismatch"]:
-        lines.append(f"\n❌ Type mismatches ({len(grouped['type_mismatch'])}):")
-        for diff in grouped["type_mismatch"]:
-            lines.append(
-                f"  - {diff['path']} (level {diff['level']}): base '{diff['base_type']}' (example: {repr(diff['base_val'])}) vs target '{diff['target_type']}' (example: {repr(diff['target_val'])})"
-            )
+        # Type mismatches
+        if grouped["type_mismatch"]:
+            lines.append(f"\n❌ Type mismatches ({len(grouped['type_mismatch'])}):")
+            for diff in grouped["type_mismatch"]:
+                lines.append(
+                    f"  - {diff['path']} : base '{diff['base_type']}' (example: {repr(diff['base_val'])}) vs target '{diff['target_type']}' (example: {repr(diff['target_val'])})"
+                )
 
-    # List length mismatches
-    if grouped["list_length"]:
-        lines.append(f"\n⚠️ List length mismatches ({len(grouped['list_length'])}):")
-        for diff in grouped["list_length"]:
-            lines.append(
-                f"  - {diff['path']} (level {diff['level']}): base {diff['base_val']} vs target {diff['target_val']}"
-            )
+        # List length mismatches
+        if grouped["list_length"]:
+            lines.append(f"\n⚠️ List length mismatches ({len(grouped['list_length'])}):")
+            for diff in grouped["list_length"]:
+                lines.append(
+                    f"  - {diff['path']} : base {diff['base_val']} vs target {diff['target_val']}"
+                )
 
-    lines.append("\n=== End of Report ===")
-    return "\n".join(lines)
+        lines.append("\n=== End of Report ===")
+        return "\n".join(lines)
 
 def compare_json_format(base, target, path="", diff=None):
     if diff is None:
@@ -133,12 +133,25 @@ def compare_json_format(base, target, path="", diff=None):
 
 BASE_JSON_PATH = "visit-sample.json"
 
+# Add this function to check if the chat is a private group
+def is_allowed_group(update: Update) -> bool:
+    # Only allow in supergroups or groups (not private chats or channels)
+    return update.effective_chat.type in [ChatType.GROUP, ChatType.SUPERGROUP]
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_allowed_group(update):
+        await update.message.reply_text("❌ This bot only works in private groups.")
+        return
+    chat_id = update.effective_chat.id
     await update.message.reply_text(
-        "Send me a JSON file (as a document). I will compare it to the base format and reply with the compliance report."
+        f"Send me a JSON file (as a document). I will compare it to the base format and reply with the compliance report.\n\nYour chat ID: `{chat_id}`",
+        parse_mode="Markdown"
     )
 
 async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not is_allowed_group(update):
+        await update.message.reply_text("❌ This bot only works in private groups.")
+        return
     document: Document = update.message.document
     if not document.file_name.endswith('.json'):
         await update.message.reply_text("Please upload a .json file.")

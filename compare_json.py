@@ -3,17 +3,16 @@ import re
 
 def is_date_string(s):
     # Simple ISO 8601 and common date format check
-    if not isinstance(s, str):
-        return False
+    # if not isinstance(s, str):
+    #     return False
     date_patterns = [
         r"^\d{4}-\d{2}-\d{2}$",  # YYYY-MM-DD
-        r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$",  # ISO 8601
-        r"^\d{2}/\d{2}/\d{4}(?: \d{2}:\d{2})?$",  # DD/MM/YYYY or DD/MM/YYYY HH:MM
+        r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$",
     ]
     return any(re.match(p, s) for p in date_patterns)
 
 def get_type(val):
-    if is_date_string(val):
+    if isinstance(val, str) and is_date_string(val):
         return "date"
     elif isinstance(val, bool):
         return "bool"
